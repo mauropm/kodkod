@@ -1,0 +1,65 @@
+# lora-chat example configuration
+# Install to ~/.config/lora-chat/config.toml
+
+[device]
+transport = "usb"          # usb | mock
+device_path = "auto"       # "auto" scans, or pin e.g. "/dev/ttyACM0"
+firmware = "auto"          # auto | rui3 | meshtastic | mock
+
+[identity]
+name = "ALPHA"             # long name broadcast in beacons
+short_name = "ALPH"
+node_id = 0x00A11CE0       # your 32-bit node number; pick something unique
+
+[radio]
+region = "US915"           # US915 EU868 EU433 CN779 CN470 IN865 AU915 KR920 AS923 RU864
+frequency_khz = 915000.0   # must be inside the region's legal band
+tx_power_dbm = 14          # capped by region + SX1262 maximum (22 dBm)
+spreading_factor = 7       # SF7..SF12
+bandwidth_khz = 125        # 125 | 250 | 500
+coding_rate = "4/5"        # 4/5 .. 4/8
+preamble_len = 8
+sync_word = 4660
+
+[chat]
+max_frame_payload = 200    # bytes per LoRa frame before fragmentation
+retry_count = 3
+retry_base_secs = 25       # ack timeout; retries back off exponentially
+ack_timeout_secs = 25
+
+[gps]
+enabled = false            # query GNSS hardware at all?
+store_local = false
+transmit = false           # master transmission gate (UI still confirms)
+precision = "km1"          # exact | m10 | m100 | km1 | km10 | city
+
+[privacy]
+share_location = false
+share_approx_location_only = true
+location_precision = "km1"
+share_altitude = false
+share_speed = false
+share_heading = false
+include_timestamp = false
+location_audience = "Nobody"   # Nobody | Contacts([...]) | Channels([...]) | TrustedNodes | Everyone
+share_battery = false
+share_telemetry = false
+share_presence = false
+share_last_seen = false
+share_signal_stats = true
+share_hardware_info = false
+respond_to_discovery = true
+emergency_overrides_privacy = false
+
+[telemetry]
+enabled = false            # telemetry is opt-in only
+interval_seconds = 300
+include_battery = false
+include_location = false
+include_environment = false
+
+[ui]
+timestamps = true
+theme = "dark"
+
+channels = ["General", "Emergency"]

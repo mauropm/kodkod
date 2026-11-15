@@ -1,0 +1,12 @@
+[Unit]
+Description=lora-chat headless gateway
+Documentation=https://github.com/example/lora-chat/docs/architecture.md
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/lora-chat --device /dev/ttyACM0 --json-status
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

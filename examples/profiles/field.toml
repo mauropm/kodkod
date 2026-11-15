@@ -1,0 +1,17 @@
+# Field profile — presence and battery visible to the group.
+# Note: this profile CANNOT enable location transmission. The GPS transmit
+# gate always requires interactive confirmation inside the app, even when a
+# profile asks for it.
+
+[gps]
+enabled = true             # acquire fixes locally only
+transmit = false           # never set to true here; UI confirmation required
+store_local = true
+
+[telemetry]
+enabled = true
+
+[privacy]
+share_presence = true
+share_battery = true
+share_telemetry = false

@@ -1,0 +1,11 @@
+# Identify RAK4631 (Adafruit WisCore) and common WisBlock serial adapters.
+# Prevents ModemManager from probing/grabbing the port and sets group access.
+
+# Adafruit WisCore RAK4631 Board
+SUBSYSTEM=="tty", ATTRS{idVendor}=="239a", ATTRS{idProduct}=="8029", MODE="0660", GROUP="dialout", ENV{ID_MM_DEVICE_IGNORE}="1"
+
+# WisBlock RAK4631 (older PID)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="239a", ATTRS{idProduct}=="0029", MODE="0660", GROUP="dialout", ENV{ID_MM_DEVICE_IGNORE}="1"
+
+# RAKwireless VID
+SUBSYSTEM=="tty", ATTRS{idVendor}=="23a1", MODE="0660", GROUP="dialout", ENV{ID_MM_DEVICE_IGNORE}="1"

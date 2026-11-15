@@ -1,0 +1,16 @@
+# Emergency profile — high-priority messaging with acknowledgements.
+# Location remains user-controlled: enabling it in an emergency still shows
+# the confirmation modal with exactly what will be sent.
+
+[gps]
+enabled = true
+transmit = false
+store_local = true
+
+[telemetry]
+enabled = true
+
+[privacy]
+share_presence = true
+share_battery = true
+share_telemetry = true

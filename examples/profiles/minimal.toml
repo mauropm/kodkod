@@ -1,0 +1,14 @@
+# Minimal profile — quietest operation, no periodic traffic at all.
+
+[gps]
+enabled = false
+transmit = false
+store_local = false
+
+[telemetry]
+enabled = false
+
+[privacy]
+share_presence = false
+share_battery = false
+share_telemetry = false

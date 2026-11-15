@@ -1,0 +1,23 @@
+# Maintainer: lora-chat contributors
+pkgname=lora-chat
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Privacy-first Linux TUI LoRa chat for RAK4631 / WisBlock hardware"
+arch=(x86_64 aarch64)
+url="https://github.com/example/lora-chat"
+license=(MIT)
+makedepends=(rust cargo)
+source=("$pkgname-$pkgver.tar.gz")
+sha256sums=(SKIP)
+
+build() {
+  cd "$pkgname-$pkgver"
+  cargo build --release --locked
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 target/release/lora-chat "$pkgdir/usr/bin/lora-chat"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/lora-chat/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/lora-chat/LICENSE"
+}
